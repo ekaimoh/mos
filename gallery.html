@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GALLERY</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Ensure the image covers the entire viewport */
+    .fullscreen-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      z-index: 9999;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    }
+    .fullscreen-image img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- Thumbnail image -->
+      <a href="#" id="viewImage"><img src="resource/images/sea-2563389_1280.jpg" class="img-thumbnail" alt="Image"></a>
+    </div>
+  </div>
+</div>
+
+<!-- Full screen modal -->
+<div id="fullscreenModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="fullscreen-image">
+          <img src="" id="fullscreenImage" alt="Fullscreen Image">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // When thumbnail image is clicked
+  $('#viewImage').click(function(e) {
+    e.preventDefault();
+    var imgSrc = $(this).find('img').attr('src');
+    $('#fullscreenImage').attr('src', imgSrc);
+    $('#fullscreenModal').modal('show');
+  });
+</script>
+
+</body>
+</html>
